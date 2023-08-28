@@ -1,14 +1,15 @@
 import 'package:go_router_test/app_lib.dart';
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
+  const SettingsPage({super.key, required this.title});
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
-        title: const Text("Settings"),
+        title: Text("Settings ${title}"),
       ),
       body: Center(
         child: ElevatedButton(

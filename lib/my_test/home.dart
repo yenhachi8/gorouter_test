@@ -29,13 +29,19 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            final m = {'name': Parking(name: '50嵐', address: '三多路')};
-            context.go(
-              '/settings/$m',
-              extra: m,
+            // final m = {'name': Parking(name: '50嵐', address: '三多路')};
+            // context.go(
+            //   '/settings/$m',
+            //   extra: m,
+            // );
+            // context.goNamed('settings', pathParameters: {'name': 'nick'});
+            // print(Uri(path: 'settings/123', queryParameters: {'filter': 'abc'})
+            //     .toString());
+            context.goNamed(
+              'settings',
+              pathParameters: {'name': 'nick'},
+              queryParameters: {'filter': 'abc'},
             );
-            // context
-            //     .goNamed('/settings', queryParameters: {'query': 'para query'});
           },
           child: Text('tap'),
         ),

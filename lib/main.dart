@@ -34,15 +34,26 @@ final GoRouter router = GoRouter(
         },
         routes: [
           GoRoute(
+            name: 'settings',
             path: 'settings/:name',
             builder: (context, state) {
               if (kDebugMode) {
-                final map = state.extra as Map;
-                print('map= ${map.runtimeType}, ${map['name']}');
-                print('name= ${state.pathParameters['name'].runtimeType}');
-                print('obj= ${(map['name'] as Parking).name}');
+                // final map = state.extra as Map;
+                // print('map= ${map.runtimeType}, ${map['name']}');
+                // print('name= ${state.pathParameters['name'].runtimeType}');
+                // print('obj= ${(map['name'] as Parking).name}');
+
+                print(
+                    'settint= ${state.namedLocation('settings', pathParameters: {
+                      'name': 'nn',
+                    }, queryParameters: {
+                      'filter': 'fil'
+                    })}');
               }
-              return const SettingsPage();
+              final title = state.pathParameters['name'] ?? 'no name';
+              return SettingsPage(
+                title: title,
+              );
             },
           ),
         ]),
