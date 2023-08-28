@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
-    context.go('/page2');
+    context.go('/page2/page3');
   }
 
   @override
