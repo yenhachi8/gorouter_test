@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:go_router_test/my_test/home.dart';
 import 'package:go_router_test/my_test/settings.dart';
@@ -32,8 +34,14 @@ final GoRouter router = GoRouter(
         },
         routes: [
           GoRoute(
-            path: 'settings',
+            path: 'settings/:name',
             builder: (context, state) {
+              if (kDebugMode) {
+                final map = state.extra as Map;
+                print('map= ${map.runtimeType}, ${map['name']}');
+                print('name= ${state.pathParameters['name'].runtimeType}');
+                print('obj= ${(map['name'] as Parking).name}');
+              }
               return const SettingsPage();
             },
           ),

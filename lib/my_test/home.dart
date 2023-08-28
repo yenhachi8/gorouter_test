@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:go_router_test/app_lib.dart';
 
 // class HomeScreen extends StatefulWidget {
@@ -28,11 +29,26 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            context.go('/settings');
+            final m = {'name': Parking(name: '50嵐', address: '三多路')};
+            context.go(
+              '/settings/$m',
+              extra: m,
+            );
+            // context
+            //     .goNamed('/settings', queryParameters: {'query': 'para query'});
           },
           child: Text('tap'),
         ),
       ),
     );
   }
+}
+
+class Parking {
+  String name;
+  String address;
+  Parking({
+    required this.name,
+    required this.address,
+  });
 }
