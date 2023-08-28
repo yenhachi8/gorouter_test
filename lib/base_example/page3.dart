@@ -16,7 +16,7 @@ class _Page3State extends State<Page3> {
           child: TextButton(
         child: Text('3'),
         onPressed: () {
-          context.go('/page2/page4');
+          context.go('/page2/page3/page4');
         },
       )),
     );
