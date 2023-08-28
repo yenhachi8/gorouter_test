@@ -1,4 +1,5 @@
 import 'package:go_router_test/my_test/home.dart';
+import 'package:go_router_test/my_test/settings.dart';
 
 import 'app_lib.dart';
 import 'package:go_router/go_router.dart';
@@ -20,19 +21,21 @@ class GoRouterTest extends StatelessWidget {
 final GoRouter router = GoRouter(
   routes: [
     GoRoute(
-      path: MyRoutes.home,
-      builder: (context, state) {
-        final fullPath = state.fullPath;
-        print('full path= ${fullPath}');
-        return HomePage();
-      },
-    ),
-    GoRoute(
-      path: '/settings',
-      builder: (context, state) {
-        return const SettingsPage();
-      },
-    ),
+        path: MyRoutes.home,
+        builder: (context, state) {
+          final fullPath = state.fullPath;
+          print('full path= ${fullPath}');
+          return HomePage();
+        },
+        routes: [
+          GoRoute(
+            path: 'settings',
+            builder: (context, state) {
+              return const SettingsPage();
+            },
+          ),
+        ]),
+
     // GoRoute(
     //   path: MyRoutes.login,
     //   builder: (context, state) {
@@ -47,24 +50,4 @@ final GoRouter router = GoRouter(
 class MyRoutes {
   static const String home = '/';
   static const String login = '/login';
-}
-
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: true,
-        title: const Text("Settings"),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () => context.go("/"),
-          child: const Text("Go to home page"),
-        ),
-      ),
-    );
-  }
 }
