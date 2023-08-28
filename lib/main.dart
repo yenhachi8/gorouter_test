@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:go_router_test/my_test/home.dart';
 import 'package:go_router_test/my_test/settings.dart';
 
@@ -24,8 +25,10 @@ final GoRouter router = GoRouter(
         path: MyRoutes.home,
         builder: (context, state) {
           final fullPath = state.fullPath;
-          print('full path= ${fullPath}');
-          return HomePage();
+          if (kDebugMode) {
+            print('full path= $fullPath');
+          }
+          return const HomePage();
         },
         routes: [
           GoRoute(
@@ -35,15 +38,6 @@ final GoRouter router = GoRouter(
             },
           ),
         ]),
-
-    // GoRoute(
-    //   path: MyRoutes.login,
-    //   builder: (context, state) {
-    //     final fullPath = state.fullPath;
-    //     print('full path= ${fullPath}');
-    //     return HomeScreen();
-    //   },
-    // ),
   ],
 );
 
